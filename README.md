@@ -1,5 +1,5 @@
 # oa
-
+https://travis-ci.org/temberature/temberature.github.io.svg?branch=gh-pages
 > OlympusAcademy
 
 ## Build Setup
@@ -32,3 +32,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 20171220
 vetur 对.vue 文件格式化因为没有完善的程序，默认不支持
+
