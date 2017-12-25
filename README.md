@@ -1,5 +1,5 @@
 # oa
-https://travis-ci.org/temberature/temberature.github.io.svg?branch=gh-pages
+<img src="https://travis-ci.org/temberature/temberature.github.io.svg?branch=gh-pages" alt="Build Status">
 > OlympusAcademy
 
 ## Build Setup
