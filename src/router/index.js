@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import courses from '@/components/courses'
+import home from '@/components/home'
 import courseDetail from '@/components/courseDetail'
 import entryForm from '@/components/entryForm'
 
@@ -10,14 +10,19 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'courses',
-      component: courses
+      name: 'home',
+      component: home
     },
     {
-      path: '/courses',
-      name: 'courses',
-      component: courses
+      path: '/home',
+      name: 'home',
+      component: home
     },
+    // {
+    //   path: '/courses',
+    //   name: 'courses',
+    //   component: courses
+    // },
     {
       path: '/course/:id',
       name: 'course',

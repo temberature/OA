@@ -1,13 +1,5 @@
 <template>
     <div class="home">
-        <header class="navBar">
-            <a href="/">
-                <h1>OA学院</h1>
-            </a>
-            <nav>
-                <img class="user" src="../assets/img/user.png" alt="">
-            </nav>
-        </header>
         <main>
             <img class="banner" src="../assets/img/banner.png" alt="">
             <section class="courses">
@@ -41,6 +33,16 @@
             </section>
 
         </main>
+        <mt-tabbar v-model="selected" :fixed=true>
+  <mt-tab-item id="tab1">
+    <img slot="icon" src="../assets/img/icon_home.png">
+    OA学院
+  </mt-tab-item>
+  <mt-tab-item id="tab2">
+    <img slot="icon" src="../assets/img/icon_profile.png">
+    个人中心
+  </mt-tab-item>
+</mt-tabbar>
     </div>
 </template>
 
@@ -60,7 +62,8 @@ export default {
       URL: '/courses',
       page: 0,
       type: 0,
-      loading: false
+      loading: false,
+      selected: 'tab1'
     }
   },
   components: {
@@ -194,6 +197,45 @@ export default {
         img {
           width: 44px;
         }
+      }
+    }
+  }
+}
+
+.mint-tabbar /deep/ .mint-tab-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #CACACA;
+  padding: 32/2px 0 34/2px;
+  color: #C0CBDE;
+  background: #fff;
+  .mint-tab-item-icon {
+    width: initial;
+    height: initial;
+    margin: 0 8/2px 0 0;
+    overflow: hidden;
+    img {
+      width: initial;
+      height: 32/2px;
+      position: relative;
+      left: -20px;
+      -webkit-filter: drop-shadow(20px 0);
+      filter: drop-shadow(20px 0);
+    }
+  }
+  .mint-tab-item-label {
+    font-size: 32/2px;
+  }
+  &:first-child {
+    border-right: 1px solid #CACACA;
+  }
+  &.is-selected {
+    color: #0B0B0B;
+    background: #fff;
+    .mint-tab-item-icon {
+      img {
+        filter: drop-shadow(rgb(11, 11, 11) 20px 0px);
       }
     }
   }
