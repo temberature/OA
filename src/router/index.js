@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import home from '@/components/home'
 import courseDetail from '@/components/courseDetail'
 import entryForm from '@/components/entryForm'
+import user from '@/components/user'
+import courses from '@/components/courses'
 
 Vue.use(Router)
 
@@ -10,7 +12,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: '',
       component: home
     },
     {
@@ -18,11 +20,6 @@ export default new Router({
       name: 'home',
       component: home
     },
-    // {
-    //   path: '/courses',
-    //   name: 'courses',
-    //   component: courses
-    // },
     {
       path: '/course/:id',
       name: 'course',
@@ -32,6 +29,26 @@ export default new Router({
       path: '/course/:id/entryForm',
       name: 'entryForm',
       component: entryForm
+    },
+    {
+      path: '/me',
+      name: 'me',
+      component: user
+    },
+    {
+      path: '/me/courses',
+      name: 'myCourses',
+      component: courses
+    },
+    {
+      path: '/user/:id',
+      name: 'user',
+      component: user
+    },
+    {
+      path: '/user/:id/courses',
+      name: 'courses',
+      component: courses
     }
   ]
 })

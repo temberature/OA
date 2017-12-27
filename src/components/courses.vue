@@ -1,37 +1,32 @@
 <template>
-    <div class="home">
-        <header>
-          <img class="banner" src="../assets/img/banner.png" alt="">
+    <div class="courses">
+        <header class="tabs">
+            <div class="tabs-list">
+                <a @click="filter(0)" :class="{on: type === 0}">
+                    <span>全部</span>
+                </a>
+                <a @click="filter(1)" :class="{on: type === 1}">
+                    <span>报名中</span>
+                </a>
+                <a @click="filter(2)" :class="{on: type === 2}">
+                    <span>哲学</span>
+                </a>
+                <a @click="filter(3)" :class="{on: type === 3}">
+                    <span>艺术</span>
+                </a>
+                <a @click="filter(4)" :class="{on: type === 4}">
+                    <span>历史</span>
+                </a>
+                <a @click="filter(5)" :class="{on: type === 5}">
+                    其他
+                </a>
+            </div>
         </header>
         <main>
-            <section class="courses">
-                <header class="tabs">
-                    <div class="tabs-list">
-                        <a @click="filter(0)" :class="{on: type === 0}">
-                            <span>全部</span>
-                        </a>
-                        <a @click="filter(1)" :class="{on: type === 1}">
-                            <span>报名中</span>
-                        </a>
-                        <a @click="filter(2)" :class="{on: type === 2}">
-                            <span>哲学</span>
-                        </a>
-                        <a @click="filter(3)" :class="{on: type === 3}">
-                            <span>艺术</span>
-                        </a>
-                        <a @click="filter(4)" :class="{on: type === 4}">
-                            <span>历史</span>
-                        </a>
-                        <a @click="filter(5)" :class="{on: type === 5}">
-                            其他
-                        </a>
-                    </div>
-                </header>
-                <ul class="app" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="10">
-                    <li is="Course" v-for="course in courses" v-bind:course="course" v-bind:key="course.id"></li>
-                </ul>
-                <mt-spinner v-if="loading" type="snake"></mt-spinner>
-            </section>
+          <ul v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="10">
+              <li is="Course" v-for="course in courses" v-bind:course="course" v-bind:key="course.id"></li>
+          </ul>
+          <mt-spinner v-if="loading" type="snake"></mt-spinner>
         </main>
     </div>
 </template>
@@ -120,10 +115,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
-.banner {
-  display: block;
-  width: 100%;
-}
 
 .tabs {
   padding-left: 21px;
@@ -191,5 +182,4 @@ export default {
     }
   }
 }
-
 </style>

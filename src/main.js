@@ -7,6 +7,8 @@ import moment from 'moment/moment'
 import 'normalize.css'
 import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css'
+import Icon from 'vue-svg-icon/Icon.vue'
+Vue.component('icon', Icon)
 Vue.use(Mint)
 
 Vue.filter('datetime', function (value, formatString) {
