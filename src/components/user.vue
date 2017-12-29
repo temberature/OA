@@ -1,7 +1,7 @@
 <template>
     <div class="user">
         <header>
-            <img class="avatar" src="../assets/user/img/avatar_default.png" alt=""> 138****5570
+            <img class="avatar" src="../assets/user/img/avatar_default.png" alt=""> {{user.phone}}
         </header>
         <main>
             <router-link to="/me/courses">
@@ -29,17 +29,16 @@
 <script>
 import axios from '../utils/customAxios'
 import Course from './course'
-import URL from '../utils/URL'
 
 export default {
   name: 'user',
   data () {
     return {
       busy: false,
-      courses: [],
-      baseURL: '/courses',
-      filterURL: '/courses',
-      URL: '/courses',
+      user: {},
+      baseURL: '/user',
+      filterURL: '/user',
+      URL: '/user',
       page: 0,
       type: 0,
       loading: false,
@@ -50,35 +49,16 @@ export default {
     Course
   },
   methods: {
-    loadMore: function () {
-      var me = this
-      me.loading = true
-      console.log('loading... ' + new Date())
-      setTimeout(function () {
-        me.URL = URL.addPara(me.filterURL, { page: ++me.page })
-        axios
-          .get(me.URL)
-          .then(function (response) {
-            console.log(response)
-            me.courses = me.courses.concat(response.data.data.courses)
-            console.log('end... ' + new Date())
-            me.loading = false
-          })
-          .catch(function (error) {
-            console.log(error)
-          })
-      }, 1000)
-    },
-    getCourses () {
+    readMe () {
       let me = this
-      me.URL = me.filterURL
+      me.URL = me.baseURL + '/0'
       me.loading = true
       axios
         .get(me.URL)
         .then(function (response) {
           console.log(response)
           me.loading = false
-          me.courses = me.courses.concat(response.data.data.courses)
+          me.user = response.data.data.user
         })
         .catch(function (error) {
           console.log(error)
@@ -97,13 +77,13 @@ export default {
 
       me.page = 0
       me.courses = []
-      me.getCourses()
+      me.readMe()
     }
   },
   created: function () {
     let me = this
 
-    me.getCourses()
+    me.readMe()
   }
 }
 </script>
@@ -118,38 +98,33 @@ a {
   text-decoration: none;
 }
 header {
-    padding: 91/2px 0 94/2px;
-    font-size: 30/2px;
-    color: #fff;
-    line-height: 42/2px;
-    text-align: center;
-    background: url(../assets/user/img/avatar-bg.png);
-    .avatar {
-        display: block;
-        width: 156/2px;
-        margin: 0 auto;
-        padding: 0 0 13/2px;
-    }
+  box-sizing: border-box;
+  min-height: 198px;
+  padding: 91/2px 0 94/2px;
+  font-size: 30/2px;
+  color: #fff;
+  line-height: 42/2px;
+  text-align: center;
+  background: url(../assets/user/img/avatar-bg.png);
+  .avatar {
+      display: block;
+      width: 156/2px;
+      margin: 0 auto;
+      padding: 0 0 13/2px;
+  }
 }
 
 & /deep/ .mint-cell {
-  border-bottom: 1px solid #E5E5E5;
   .mint-cell-wrapper {
-    padding: 0 38/2px;
-    .mint-cell-title {
-      display: flex;
-      .svg-icon {
-        margin-right: 19/2px;
-      }
-    }
+    padding: 0 40/2px;
   }
-  .mint-cell-value {
-    input, span {
-      color: #ccc;
-    }
-    &.is-link {
-      margin-right: 19/2px;
-    }
-  }
+  // .mint-cell-value {
+  //   input, span {
+  //     color: #ccc;
+  //   }
+  //   &.is-link {
+  //     margin-right: 19/2px;
+  //   }
+  // }
 }
 </style>

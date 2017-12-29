@@ -19,9 +19,9 @@
         限{{course.quota}}人
       </div>
       <div class="period">
-        <img v-if="course.period === 0" src="../assets/img/period_enrolling.png" alt="">
-        <img v-else-if="course.period === 1" src="../assets/img/period_ongoing.png" alt="">
-        <img v-else-if="course.period === 2" src="../assets/img/period_enrolling.png" alt="">
+        <img v-if="course.period === 0" src="../assets/home/img/period_enrolling.png" alt="">
+        <img v-else-if="course.period === 1" src="../assets/home/img/period_ongoing.png" alt="">
+        <img v-else-if="course.period === 2" src="../assets/home/img/period_finish.png" alt="">
       </div>
     </div>
   </li>

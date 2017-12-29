@@ -4,7 +4,7 @@
           <img src="../assets/course/entryForm/img/enroll_success.png" alt="">
           <div>报名申请成功</div>
           <router-link to="/home">
-            <mt-button type="default" class="enrollBtn">我知道了</mt-button>
+            <mt-button type="primary" class="enrollBtn">我知道了</mt-button>
           </router-link>
           
         </div>
@@ -20,7 +20,7 @@
                 <textarea class="oa-textarea" placeholder="记录一下参加理由吧" rows="3"></textarea>
             </div>
         </div>
-        <mt-button @click="enroll()" type="default" class="enrollBtn">马上报名</mt-button>
+        <mt-button @click="enroll()" type="primary" class="enrollBtn" size="large">马上报名</mt-button>
         <div class="hint">为了保证课程质量和体验，OA活动会控制合适的参与人数及质量。</div>
 
         <mt-actionsheet :actions="sexSheetActions" v-model="sexSheetVisible">
@@ -119,21 +119,6 @@ a {
         color: #ccc;
         text-align: right;
       }
-      
-    }
-    & /deep/ .mint-cell {
-      border-bottom: 1px solid #E5E5E5;
-      .mint-cell-wrapper {
-        padding: 0 38/2px;
-      }
-      .mint-cell-value {
-        input, span {
-          color: #ccc;
-        }
-        &.is-link {
-          margin-right: 19/2px;
-        }
-      }
     }
     .oa-textarea {
         display: block;
@@ -158,15 +143,9 @@ a {
     }
   }
   .enrollBtn {
-    display: block;
     width: 670/750*100%;
     height: 86/2px;
     margin: 50/2px auto 30/2px;
-    font-size: 34/2px;
-    color: #fff;
-    text-align: center;
-    line-height: 48/2px;
-    background: #FF691E;
   }
   .hint {
     width: 662/750*100%;

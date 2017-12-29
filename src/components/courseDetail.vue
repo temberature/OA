@@ -9,38 +9,44 @@
       <div class="title">
         <span class="name">
           {{course.name}}
-        </span>
+        </span>       
+      </div>
+      <div class="deadline">
+        报名截止至：{{course.startDate | datetime('YYYY/MM/DD')}} 
         <span class="period">
-          <img v-if="course.period === 0" src="../assets/course/img/period_enrolling.png" alt="">
-          <img v-else-if="course.period === 1" src="../assets/img/period_ongoing.png" alt="">
-          <img v-else-if="course.period === 2" src="../assets/img/period_enrolling.png" alt="">
-        </span>        
+          <img v-if="course.period === 0" src="../assets/courseDetail/img/period_enrolling.png" alt="">
+          <img v-else-if="course.period === 1" src="../assets/courseDetail/img/period_ongoing.png" alt="">
+          <img v-else-if="course.period === 2" src="../assets/courseDetail/img/period_finish.png" alt="">
+        </span>
       </div>
-      <div class="deadline">报名截止至：{{course.startDate | datetime('YYYY/MM/DD')}} </div>
-      <div class="cell enrollData">
-        <label for="">报名人数</label>
-        已报{{course.entrant}}人/限制{{course.quota}}
-      </div>
-      <div class="cell time">
-        <label for="">活动时间</label>
+      <mt-cell title="报名人数" value="">
+        已报{{course.entrant}}人/限制{{course.quota}}人
+      </mt-cell>
+      <mt-cell title="活动时间" value="">
         {{course.startDate | datetime('YYYY/MM/DD')}}-{{course.endDate | datetime('YYYY/MM/DD')}}
-      </div>
-      <div class="cell address">
-        <label for="">活动地点</label>
+      </mt-cell>
+      <mt-cell title="活动地点" value="" is-link>
+        <icon name="icon_place" style="width: 10px;height:12px;"></icon>
         {{course.address}}
-      </div>
-      <div class="cell fee">
-        <label for="">费用</label>
+      </mt-cell>
+      <mt-cell title="费用" value="">
         <template v-if="course.fee === 0">免费</template>
         <template v-else>收费</template>
-      </div>
+      </mt-cell>
       <div class="detail">
-        <label for="">活动详情</label>
-        {{course.detail}}
+        <template v-if="course.detail">
+          {{course.detail}}
+        </template>
+        <template v-else>
+          活动详情
+        </template>
       </div>
     </div>
     <router-link :to="{path: './entryForm'}" append>
-      <div class="enrollBtn">立即报名</div>
+      <template v-if="course.period === 0">
+        <mt-button v-if="course.enrolled" disabled class="enrollBtn" type="primary" size="large">已报名</mt-button>
+        <mt-button v-if="!course.enrolled" class="enrollBtn" type="primary" size="large">立即报名</mt-button>
+      </template>
     </router-link>
     
   </div>
@@ -92,8 +98,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
+a {
+  text-decoration: none;
+}
 .course {
   position: relative;
+  background: #fff;
   .coverContainer {
     box-sizing: border-box;
     position: relative;
@@ -126,8 +136,14 @@ export default {
   .info {
     margin: 32/2px 40/2px 13px 38/2px;
     font-size: 26/2px;
-    color: #9b9b9b;
+    color: #494949;
     line-height: 105/2px;
+    background: #fff;
+    & /deep/ .mint-cell {
+      .mint-cell-wrapper {
+        padding-left: 0;
+      }
+    }
     .title {
       line-height: 1;
       .name {
@@ -136,15 +152,17 @@ export default {
         color: #2a2a2a;
         line-height: 25px;
       }
-      .period {
-        img {
-          width: 122/2px;
-        }
-      }         
+         
     }
     .deadline {
       margin: 22/2px auto 35/2px;
       line-height: 1;
+      .period {
+        vertical-align: middle;
+        img {
+          width: 122/2px;
+        }
+      }
     }
     .cell {
       display: flex;
@@ -166,19 +184,14 @@ export default {
       
     }
     .detail {
+      min-height: 200px;
       border-top: 1px solid #E5E5E5;
     }
   }
   .enrollBtn {
     position: fixed;
     bottom: 0;
-    width: 100%;
-    padding: 22/2px 0 26/2px;
-    font-size: 34/2px;
-    color: #fff;
-    text-align: center;
-    line-height: 48/2px;
-    background: #FF691E;
+    border-radius: 0;
   }
 }
 </style>
