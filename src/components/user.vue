@@ -18,10 +18,12 @@
                 <span></span>
                 <icon slot="icon" name="icon_about" style="width: 16px;height:16px;"></icon>
             </mt-cell>
-            <mt-cell title="设置" is-link>
-                <span></span>
-                <icon slot="icon" name="icon_setting" style="width: 16px;height:16px;"></icon>
-            </mt-cell>
+            <router-link to="/setting">
+              <mt-cell title="设置" is-link>
+                  <span></span>
+                  <icon slot="icon" name="icon_setting" style="width: 16px;height:16px;"></icon>
+              </mt-cell>
+            </router-link>
         </main>
     </div>
 </template>

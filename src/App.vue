@@ -36,7 +36,7 @@
         me.isTab = false
       }
       me.$router.beforeEach((to, from, next) => {
-        if (['home', 'me'].includes(to.name)) {
+        if (['home', 'me', ''].includes(to.name)) {
           me.isTab = true
         } else {
           me.isTab = false
@@ -125,6 +125,10 @@ html, body {
 .mint-button {
   height: 96/2px;
   font-size: 34/2px;
+  &.mint-button--default {
+    color: #494949;
+    background: #fff;
+  }
   &.mint-button--primary {
     background: #FF691E;
   }

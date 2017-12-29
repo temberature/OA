@@ -7,6 +7,7 @@ import user from '@/components/user'
 import courses from '@/components/courses'
 import signin from '@/components/signin'
 import signup from '@/components/signup'
+import settings from '@/components/settings'
 
 Vue.use(Router)
 
@@ -61,6 +62,11 @@ export default new Router({
       path: '/signup',
       name: 'signup',
       component: signup
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: settings
     }
   ]
 })
