@@ -18,7 +18,7 @@
                 <span></span>
                 <icon slot="icon" name="icon_about" style="width: 16px;height:16px;"></icon>
             </mt-cell>
-            <router-link to="/setting">
+            <router-link to="/settings">
               <mt-cell title="设置" is-link>
                   <span></span>
                   <icon slot="icon" name="icon_setting" style="width: 16px;height:16px;"></icon>

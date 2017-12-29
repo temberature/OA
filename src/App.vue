@@ -97,6 +97,7 @@ html, body {
   border-top: 1px solid #E5E5E5 ;
   .mint-cell-wrapper {
     padding: 0 38/2px;
+    background-image: none;
     .mint-cell-title {
       display: flex;
       .svg-icon {
