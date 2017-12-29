@@ -48,14 +48,16 @@
 </script>
 
 <style lang="less">
-body {
-    background: #F4F4F4;
+html, body {
+  height: 100%;
+  background: #F4F4F4;
 }
 #app {
-    font-family: PingFangSC-Regular, 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: #2c3e50;
+  height: 100%;
+  font-family: PingFangSC-Regular, 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
 }
 
 .mint-tabbar {
@@ -100,6 +102,7 @@ body {
       .svg-icon {
         margin-right: 19/2px;
       }
+
     }
     .mint-cell-value {
       font-size: 26/2px;
@@ -115,19 +118,9 @@ body {
       }
     }
   }
-  .mint-cell-value {
-    font-size: 26/2px;
-    color: #9B9B9B;
-    input, span {
-      color: #ccc;
-    }
-    .svg-icon {
-      margin-right: 12/2px;
-    }    
-    &.is-link {
-      margin-right: 19/2px;
-    }
-  }
+}
+.mint-field.is-nolabel .mint-cell-title {
+  display: none;
 }
 .mint-button {
   height: 96/2px;

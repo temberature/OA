@@ -5,6 +5,8 @@ import courseDetail from '@/components/courseDetail'
 import entryForm from '@/components/entryForm'
 import user from '@/components/user'
 import courses from '@/components/courses'
+import signin from '@/components/signin'
+import signup from '@/components/signup'
 
 Vue.use(Router)
 
@@ -49,6 +51,16 @@ export default new Router({
       path: '/user/:id/courses',
       name: 'courses',
       component: courses
+    },
+    {
+      path: '/signin',
+      name: 'signin',
+      component: signin
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: signup
     }
   ]
 })
