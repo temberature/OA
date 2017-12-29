@@ -52,6 +52,9 @@ html, body {
   height: 100%;
   background: #F4F4F4;
 }
+a {
+  text-decoration: none;
+}
 #app {
   height: 100%;
   font-family: PingFangSC-Regular, 'Avenir', Helvetica, Arial, sans-serif;

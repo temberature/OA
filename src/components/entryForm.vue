@@ -3,7 +3,7 @@
         <div v-show="enrolled" class="tip">
           <img src="../assets/course/entryForm/img/enroll_success.png" alt="">
           <div>报名申请成功</div>
-          <router-link to="/home">
+          <router-link to="/me/courses">
             <mt-button type="primary" class="enrollBtn">我知道了</mt-button>
           </router-link>
           

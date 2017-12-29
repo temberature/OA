@@ -1,33 +1,43 @@
 <template>
-    <div class="courses">
-        <header class="tabs">
-            <div class="tabs-list">
-                <a @click="filter(0)" :class="{on: type === 0}">
-                    <span>全部</span>
-                </a>
-                <a @click="filter(1)" :class="{on: type === 1}">
-                    <span>报名中</span>
-                </a>
-                <a @click="filter(2)" :class="{on: type === 2}">
-                    <span>哲学</span>
-                </a>
-                <a @click="filter(3)" :class="{on: type === 3}">
-                    <span>艺术</span>
-                </a>
-                <a @click="filter(4)" :class="{on: type === 4}">
-                    <span>历史</span>
-                </a>
-                <a @click="filter(5)" :class="{on: type === 5}">
-                    其他
-                </a>
-            </div>
-        </header>
-        <main>
-          <ul v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="10">
-              <li is="Course" v-for="course in courses" v-bind:course="course" v-bind:key="course.id"></li>
-          </ul>
-          <mt-spinner v-if="loading" type="snake"></mt-spinner>
-        </main>
+    <div class="myCourses">
+        <div v-if="courses.length === 0" class="tip">
+          <img class="noCourseTip" src="../assets/user/courses/img/no-course-tip.svg" alt="">
+          <div class="desc">还没有参加过的活动</div> 
+          <router-link to="/home">
+            <mt-button type="primary" size="large" class="knowBtn">我知道了</mt-button>
+          </router-link>
+        </div>
+        <div v-else class="courses">
+          <header class="tabs">
+              <div class="tabs-list">
+                  <a @click="filter(0)" :class="{on: type === 0}">
+                      <span>全部</span>
+                  </a>
+                  <a @click="filter(1)" :class="{on: type === 1}">
+                      <span>报名中</span>
+                  </a>
+                  <a @click="filter(2)" :class="{on: type === 2}">
+                      <span>哲学</span>
+                  </a>
+                  <a @click="filter(3)" :class="{on: type === 3}">
+                      <span>艺术</span>
+                  </a>
+                  <a @click="filter(4)" :class="{on: type === 4}">
+                      <span>历史</span>
+                  </a>
+                  <a @click="filter(5)" :class="{on: type === 5}">
+                      其他
+                  </a>
+              </div>
+          </header>
+          <main>
+            <ul  v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="10">
+                <li is="Course" v-for="course in courses" v-bind:course="course" v-bind:key="course.id"></li>
+            </ul>
+            <mt-spinner v-if="loading" type="snake"></mt-spinner>
+          </main>
+        </div>
+
     </div>
 </template>
 
@@ -42,9 +52,9 @@ export default {
     return {
       busy: false,
       courses: [],
-      baseURL: '/courses',
-      filterURL: '/courses',
-      URL: '/courses',
+      baseURL: 'user/0/courses',
+      filterURL: 'user/0/courses',
+      URL: 'user/0/courses',
       page: 0,
       type: 0,
       loading: false,
@@ -116,6 +126,28 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
 
+.myCourses {
+  height: 100%;
+  text-align: center;
+  background: #fff;
+  .tip {
+    font-size: 38/2px;
+    color: #494949;
+  }
+  .noCourseTip {
+    display: block;
+    width: 316/2px;
+    height: 245/2px;
+    margin: 0 auto;
+    padding: 162/2px 0 44/2px;
+  }
+  .knowBtn {
+    display: block;
+    width: 570/750*100%;
+    height: 86/2px;
+    margin: 200/2px auto 0;
+  }
+}
 .tabs {
   padding-left: 21px;
   border-bottom: 1px solid #e5e5e5;
